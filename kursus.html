@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kursus Keuangan - Dashboard UMKM</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                'custom-bg': 'var(--custom-bg-color)',
+                'custom-dashboard': 'var(--custom-dashboard-color)',
+                'custom-green': 'var(--custom-green-color)',
+                'custom-green-hover': 'var(--custom-green-hover-color)',
+                'custom-text-primary': 'var(--custom-text-primary)',
+                'custom-text-secondary': 'var(--custom-text-secondary)',
+              }
+            }
+          }
+        }
+      </script>
+      <style>
+        .popular-courses-container::-webkit-scrollbar {
+            height: 8px;
+        }
+        .popular-courses-container::-webkit-scrollbar-track {
+            background: var(--custom-dashboard-color);
+            border-radius: 10px;
+        }
+        .popular-courses-container::-webkit-scrollbar-thumb {
+            background: var(--custom-scrollbar-thumb);
+            border-radius: 10px;
+        }
+        .popular-courses-container::-webkit-scrollbar-thumb:hover {
+            background: var(--custom-scrollbar-thumb-hover);
+        }
+        .course-card-image {
+            aspect-ratio: 16 / 9; 
+            object-fit: cover; 
+        }
+      </style>
+</head>
+<body class="flex h-screen overflow-hidden bg-custom-bg text-custom-text-primary">
+
+    <aside id="sidebar" class="sidebar-transition bg-custom-dashboard text-custom-text-primary flex flex-col p-4 space-y-6 fixed top-0 left-0 h-full z-20" style="width: 260px;">
+        <div class="flex flex-col items-center space-y-2 py-4">
+            <div id="user-avatar-container" class="w-20 h-20 bg-gray-500 rounded-full flex items-center justify-center text-white text-2xl mb-2 overflow-hidden">
+                <img src="https://placehold.co/80x80/9AE19D/0D0F11?text=U" alt="Avatar Pengguna" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/80x80/1F1F1F/E2E8F0?text=U';">
+            </div>
+            <span id="user-name-sidebar" class="text-lg font-semibold sidebar-item-text">Nama</span>
+        </div>
+
+        <nav class="flex-grow space-y-2">
+            <a href="dashboard.html" class="flex items-center space-x-3 p-3 " data-text="Dashboard">
+                <img src="assets/dashboard_icon.png" alt="Dashboard" class="h-4 w-4 flex-shrink-0" onerror="this.onerror=null; this.src='https://placehold.co/24x24/1F1F1F/9AE19D?text=D'; this.alt='Ikon Dasbor Cadangan';">
+                <span class="sidebar-item-text">Dashboard</span>
+            </a>
+            <a href="saran.html" class="flex items-center space-x-3 p-3 " data-text="Saran">
+                <img src="assets/saran_icon.png" alt="Saran" class="h-4 w-4 flex-shrink-0" onerror="this.onerror=null; this.src='https://placehold.co/24x24/1F1F1F/E2E8F0?text=S'; this.alt='Ikon Saran Cadangan';">
+                <span class="sidebar-item-text">Saran</span>
+            </a>
+            <a href="modal.html" class="flex items-center space-x-3 p-3 " data-text="Modal">
+                 <img src="assets/modal_icon.png" alt="Modal" class="h-4 w-4 flex-shrink-0" onerror="this.onerror=null; this.src='https://placehold.co/24x24/1F1F1F/E2E8F0?text=M'; this.alt='Ikon Modal Cadangan';">
+                <span class="sidebar-item-text">Modal</span>
+            </a>
+            <a href="kursus.html" class="flex items-center space-x-3 p-3 " data-text="Kursus"> <!-- Aktifkan link ini -->
+                <img src="assets/vector_icon.png" alt="Kursus" class="h-3 w-4 flex-shrink-0" onerror="this.onerror=null; this.src='https://placehold.co/24x24/1F1F1F/E2E8F0?text=K'; this.alt='Ikon Kursus Cadangan';">
+                <span class="sidebar-item-text">Kursus</span>
+            </a>
+        </nav>
+
+        <div class="mt-auto">
+            <button id="logout-button" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-700 w-full text-left" data-text="LOG OUT">
+                <img src="assets/Group.png" alt="Log Out" class="h-3 w-3 flex-shrink-0" onerror="this.onerror=null; this.src='https://placehold.co/24x24/1F1F1F/E2E8F0?text=LO'; this.alt='Ikon Logout Cadangan';">
+                <span class="sidebar-item-text font-bold">LOG OUT</span>
+            </button>
+        </div>
+
+        <button id="sidebar-toggle" class="absolute -right-3 top-1/2 -translate-y-1/2 bg-custom-green hover:bg-custom-green-hover text-custom-bg p-1.5 rounded-full focus:outline-none focus:ring-2 focus:ring-custom-green z-30">
+            <svg xmlns="http://www.w3.org/2000/svg" id="toggle-icon" class="h-5 w-5 rotate-180-transition transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
+        </button>
+    </aside>
+
+    <main id="main-content" class="flex-1 p-6 md:p-8 lg:p-10 overflow-y-auto content-transition">
+        <header class="mb-8">
+            <div class="flex flex-col md:flex-row justify-between md:items-center gap-4">
+                <h1 class="text-2xl md:text-3xl font-semibold text-custom-text-primary">Kursus Keuangan</h1>
+                <div class="relative w-full md:w-1/3">
+                    <input type="search" placeholder="Cari kursus..." class="w-full bg-custom-dashboard border border-gray-700 text-custom-text-secondary text-sm rounded-lg p-2.5 pl-10 focus:ring-custom-green focus:border-custom-green">
+                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                        <svg class="w-4 h-4 text-custom-text-secondary" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section class="mb-10">
+            <div class="flex flex-col md:flex-row justify-between md:items-center gap-4 mb-6">
+                 <h2 class="text-xl font-semibold text-custom-text-primary">Kursus Populer</h2>
+                <div class="flex items-center gap-4">
+                    <select class="bg-custom-dashboard border border-gray-700 text-custom-text-secondary text-sm rounded-lg p-2 focus:ring-custom-green focus:border-custom-green">
+                        <option selected>Kategori</option>
+                        <option value="akuntansi">Akuntansi</option>
+                        <option value="keuangan">Keuangan</option>
+                        <option value="pemasaran">Pemasaran</option>
+                        <option value="pajak">Pajak</option>
+                    </select>
+                    <select class="bg-custom-dashboard border border-gray-700 text-custom-text-secondary text-sm rounded-lg p-2 focus:ring-custom-green focus:border-custom-green">
+                        <option selected>Urutkan</option>
+                        <option value="populer">Paling Populer</option>
+                        <option value="terbaru">Paling Baru</option>
+                        <option value="rating">Rating Tertinggi</option>
+                    </select>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <div class="bg-custom-dashboard rounded-xl shadow-lg overflow-hidden flex flex-col">
+                    <img img src="" alt="" class="w-full h-40 course-card-image">
+                    <div class="p-4 flex flex-col flex-grow">
+                        <h3 class="text-md font-semibold text-custom-text-primary mb-1">TITLE</h3>
+                        <p class="text-xs text-custom-green bg-custom-green/10 inline-block px-2 py-0.5 rounded-full mb-2 self-start">category</p>
+                        <p class="text-xs text-custom-text-secondary mb-3 flex-grow">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <div class="mb-2">
+                            <p class="text-xs text-custom-text-secondary">Progress: 80%</p>
+                            <div class="w-full bg-gray-700 rounded-full h-1.5 mt-1">
+                                <div class="bg-custom-green h-1.5 rounded-full" style="width: 80%;"></div>
+                            </div>
+                        </div>
+                        <a href="course-detail.html?courseId=manajemen-kas" class="block mt-auto w-full bg-custom-green text-custom-bg text-sm font-medium py-2 px-4 rounded-lg hover:bg-custom-green-hover text-center">Lanjutkan Belajar</a>
+                    </div>
+                </div>
+                <div class="bg-custom-dashboard rounded-xl shadow-lg overflow-hidden flex flex-col">
+                    <img img src="" alt="" class="w-full h-40 course-card-image">
+                    <div class="p-4 flex flex-col flex-grow">
+                        <h3 class="text-md font-semibold text-custom-text-primary mb-1">TITLE</h3>
+                        <p class="text-xs text-custom-green bg-custom-green/10 inline-block px-2 py-0.5 rounded-full mb-2 self-start">category</p>
+                        <p class="text-xs text-custom-text-secondary mb-3 flex-grow">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                         <div class="mb-2">
+                            <p class="text-xs text-custom-text-secondary">Progress: 40%</p>
+                            <div class="w-full bg-gray-700 rounded-full h-1.5 mt-1">
+                                <div class="bg-custom-green h-1.5 rounded-full" style="width: 40%;"></div>
+                            </div>
+                        </div>
+                        <a href="course-detail.html?courseId=dasar-akuntansi" class="block mt-auto w-full bg-custom-green text-custom-bg text-sm font-medium py-2 px-4 rounded-lg hover:bg-custom-green-hover text-center">Lanjutkan Belajar</a>
+                    </div>
+                </div>
+                <div class="bg-custom-dashboard rounded-xl shadow-lg overflow-hidden flex flex-col">
+                     <img img src="" alt="" class="w-full h-40 course-card-image">
+                    <div class="p-4 flex flex-col flex-grow">
+                        <h3 class="text-md font-semibold text-custom-text-primary mb-1">TITLE</h3>
+                        <p class="text-xs text-custom-green bg-custom-green/10 inline-block px-2 py-0.5 rounded-full mb-2 self-start">category</p>
+                        <p class="text-xs text-custom-text-secondary mb-3 flex-grow">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                         <div class="mb-2">
+                            <p class="text-xs text-custom-text-secondary">Progress: 0%</p>
+                            <div class="w-full bg-gray-700 rounded-full h-1.5 mt-1">
+                                <div class="bg-custom-green h-1.5 rounded-full" style="width: 0%;"></div>
+                            </div>
+                        </div>
+                        <a href="course-detail.html?courseId=pemasaran-digital" class="block mt-auto w-full bg-custom-green text-custom-bg text-sm font-medium py-2 px-4 rounded-lg hover:bg-custom-green-hover text-center">Mulai Belajar</a>
+                    </div>
+                </div>
+                <div class="bg-custom-dashboard rounded-xl shadow-lg overflow-hidden flex flex-col">
+                     <img img src="" alt="" class="w-full h-40 course-card-image">
+                    <div class="p-4 flex flex-col flex-grow">
+                        <h3 class="text-md font-semibold text-custom-text-primary mb-1">TITLE</h3>
+                        <p class="text-xs text-custom-green bg-custom-green/10 inline-block px-2 py-0.5 rounded-full mb-2 self-start">category</p>
+                        <p class="text-xs text-custom-text-secondary mb-3 flex-grow">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                         <div class="mb-2">
+                            <p class="text-xs text-custom-text-secondary">Progress: 0%</p>
+                            <div class="w-full bg-gray-700 rounded-full h-1.5 mt-1">
+                                <div class="bg-custom-green h-1.5 rounded-full" style="width: 0%;"></div>
+                            </div>
+                        </div>
+                        <a href="course-detail.html?courseId=pemasaran-digital" class="block mt-auto w-full bg-custom-green text-custom-bg text-sm font-medium py-2 px-4 rounded-lg hover:bg-custom-green-hover text-center">Mulai Belajar</a>
+                    </div>
+                </div>
+                <div class="bg-custom-dashboard rounded-xl shadow-lg overflow-hidden flex flex-col">
+                     <img img src="" alt="" class="w-full h-40 course-card-image">
+                    <div class="p-4 flex flex-col flex-grow">
+                        <h3 class="text-md font-semibold text-custom-text-primary mb-1">TITLE</h3>
+                        <p class="text-xs text-custom-green bg-custom-green/10 inline-block px-2 py-0.5 rounded-full mb-2 self-start">category</p>
+                        <p class="text-xs text-custom-text-secondary mb-3 flex-grow">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                         <div class="mb-2">
+                            <p class="text-xs text-custom-text-secondary">Progress: 0%</p>
+                            <div class="w-full bg-gray-700 rounded-full h-1.5 mt-1">
+                                <div class="bg-custom-green h-1.5 rounded-full" style="width: 0%;"></div>
+                            </div>
+                        </div>
+                        <a href="course-detail.html?courseId=pemasaran-digital" class="block mt-auto w-full bg-custom-green text-custom-bg text-sm font-medium py-2 px-4 rounded-lg hover:bg-custom-green-hover text-center">Mulai Belajar</a>
+                    </div>
+                </div>
+                <div class="bg-custom-dashboard rounded-xl shadow-lg overflow-hidden flex flex-col">
+                     <img img src="" alt="" class="w-full h-40 course-card-image">
+                    <div class="p-4 flex flex-col flex-grow">
+                        <h3 class="text-md font-semibold text-custom-text-primary mb-1">TITLE</h3>
+                        <p class="text-xs text-custom-green bg-custom-green/10 inline-block px-2 py-0.5 rounded-full mb-2 self-start">category</p>
+                        <p class="text-xs text-custom-text-secondary mb-3 flex-grow">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                         <div class="mb-2">
+                            <p class="text-xs text-custom-text-secondary">Progress: 0%</p>
+                            <div class="w-full bg-gray-700 rounded-full h-1.5 mt-1">
+                                <div class="bg-custom-green h-1.5 rounded-full" style="width: 0%;"></div>
+                            </div>
+                        </div>
+                        <a href="course-detail.html?courseId=pemasaran-digital" class="block mt-auto w-full bg-custom-green text-custom-bg text-sm font-medium py-2 px-4 rounded-lg hover:bg-custom-green-hover text-center">Mulai Belajar</a>
+                    </div>
+                </div>
+        </section>
+
+        <div id="messageModal" class="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50 hidden p-4">
+            <div class="bg-custom-dashboard p-6 rounded-lg shadow-xl max-w-sm w-full">
+                <h3 id="modalTitle" class="text-xl font-semibold mb-4 text-custom-text-primary">Pesan</h3>
+                <p id="modalMessage" class="text-custom-text-secondary mb-6">Ini adalah pesan contoh.</p>
+                <button id="modalCloseButton" class="w-full bg-custom-green hover:bg-custom-green-hover text-custom-bg font-semibold py-2 px-4 rounded-lg">
+                    Tutup
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

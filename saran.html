@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saran Keuangan - Dashboard UMKM</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                'custom-bg': 'var(--custom-bg-color)',
+                'custom-dashboard': 'var(--custom-dashboard-color)',
+                'custom-green': 'var(--custom-green-color)',
+                'custom-green-hover': 'var(--custom-green-hover-color)',
+                'custom-text-primary': 'var(--custom-text-primary)',
+                'custom-text-secondary': 'var(--custom-text-secondary)',
+              }
+            }
+          }
+        }
+      </script>
+</head>
+<body class="flex h-screen overflow-hidden bg-custom-bg text-custom-text-primary">
+
+    <aside id="sidebar" class="sidebar-transition bg-custom-dashboard text-custom-text-primary flex flex-col p-4 space-y-6 fixed top-0 left-0 h-full z-20" style="width: 260px;">
+        <div class="flex flex-col items-center space-y-2 py-4">
+            <div id="user-avatar-container" class="w-20 h-20 bg-gray-500 rounded-full flex items-center justify-center text-white text-2xl mb-2 overflow-hidden">
+                <img src="https://placehold.co/80x80/9AE19D/0D0F11?text=U" alt="User Avatar" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/80x80/1F1F1F/E2E8F0?text=U';">
+            </div>
+            <span id="user-name-sidebar" class="text-lg font-semibold sidebar-item-text">Nama</span>
+        </div>
+
+        <nav class="flex-grow space-y-2">
+            <a href="dashboard.html" class="flex items-center space-x-3 p-3 " data-text="Dashboard">
+                <img src="assets/dashboard_icon.png" alt="Dashboard" class="h-4 w-4 flex-shrink-0" onerror="this.onerror=null; this.src='https://placehold.co/24x24/1F1F1F/9AE19D?text=D'; this.alt='Dashboard Icon Fallback';">
+                <span class="sidebar-item-text">Dashboard</span>
+            </a>
+            <a href="saran.html" class="flex items-center space-x-3 p-3 " data-text="Saran">
+                <img src="assets/saran_icon.png" alt="Laporan" class="h-4 w-4 flex-shrink-0" ; this.src='https://placehold.co/24x24/1F1F1F/E2E8F0?text=L'; this.alt='Laporan Icon Fallback';">
+                <span class="sidebar-item-text">Saran</span>
+            </a>
+            <a href="modal.html" class="flex items-center space-x-3 p-3 " data-text="Modal">
+                 <img src="assets/modal_icon.png" alt="Transaksi" class="h-4 w-4 flex-shrink-0" ; this.src='https://placehold.co/24x24/1F1F1F/E2E8F0?text=T'; this.alt='Transaksi Icon Fallback';">
+                <span class="sidebar-item-text">Modal</span>
+            </a>
+            <a href="kursus.html" class="flex items-center space-x-3 p-3 " data-text="Kursus">
+                <img src="assets/vector_icon.png" alt="Kontak" class="h-3 w-4 flex-shrink-0" ; this.src='https://placehold.co/24x24/1F1F1F/E2E8F0?text=K'; this.alt='Kontak Icon Fallback';">
+                <span class="sidebar-item-text">Kursus</span>
+            </a>
+        </nav>
+
+        <div class="mt-auto">
+            <button id="logout-button" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-700 w-full text-left" data-text="LOG OUT">
+                <img src="assets/Group.png" alt="Log Out" class="h-3 w-3 flex-shrink-0" ; this.src='https://placehold.co/24x24/1F1F1F/E2E8F0?text=LO'; this.alt='Logout Icon Fallback';">
+                <span class="sidebar-item-text font-bold">LOG OUT</span>
+            </button>
+        </div>
+
+        <button id="sidebar-toggle" class="absolute -right-3 top-1/2 -translate-y-1/2 bg-custom-green hover:bg-custom-green-hover text-custom-bg p-1.5 rounded-full focus:outline-none focus:ring-2 focus:ring-custom-green z-30">
+            <svg xmlns="http://www.w3.org/2000/svg" id="toggle-icon" class="h-5 w-5 rotate-180-transition transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
+        </button>
+    </aside>
+
+    <main id="main-content" class="flex-1 p-6 md:p-10 overflow-y-auto content-transition">
+        <header class="mb-8">
+            <h1 class="text-3xl font-semibold text-custom-text-primary">Saran & Rekomendasi Keuangan</h1>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-custom-dashboard p-6 rounded-xl shadow-lg flex flex-col">
+                <h2 class="text-xl font-semibold text-custom-green mb-3">Optimalkan Pengelolaan Kas</h2>
+                <p class="text-custom-text-secondary mb-4 text-sm flex-grow">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                </p>
+                <ul class="list-disc list-inside text-custom-text-secondary space-y-1 text-sm mb-4">
+                    <li>Lorem ipsum dolor sit amet.</li>
+                    <li>Consectetur adipiscing elit.</li>
+                    <li>Sed do eiusmod tempor.</li>
+                </ul>
+                <button class="mt-auto text-sm bg-custom-green text-custom-bg hover:bg-custom-green-hover py-2 px-4 rounded-lg w-full sm:w-auto">Pelajari Lebih Lanjut</button>
+            </div>
+
+            <div class="bg-custom-dashboard p-6 rounded-xl shadow-lg flex flex-col">
+                <h2 class="text-xl font-semibold text-custom-green mb-3">Kurangi Biaya Tidak Perlu</h2>
+                <p class="text-custom-text-secondary mb-4 text-sm flex-grow">
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+                <ul class="list-disc list-inside text-custom-text-secondary space-y-1 text-sm mb-4">
+                    <li>Ut enim ad minim veniam.</li>
+                    <li>Quis nostrud exercitation.</li>
+                    <li>Ullamco laboris nisi ut aliquip.</li>
+                </ul>
+                 <button class="mt-auto text-sm bg-custom-green text-custom-bg hover:bg-custom-green-hover py-2 px-4 rounded-lg w-full sm:w-auto">Lihat Tips Hemat</button>
+            </div>
+
+            <div class="bg-custom-dashboard p-6 rounded-xl shadow-lg flex flex-col">
+                <h2 class="text-xl font-semibold text-custom-green mb-3">Diversifikasi Sumber Pendapatan</h2>
+                <p class="text-custom-text-secondary mb-4 text-sm flex-grow">
+                    Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est.
+                </p>
+                <ul class="list-disc list-inside text-custom-text-secondary space-y-1 text-sm mb-4">
+                    <li>Qui dolorem ipsum quia dolor.</li>
+                    <li>Sit amet, consectetur, adipisci velit.</li>
+                    <li>Sed quia non numquam eius modi.</li>
+                </ul>
+                 <button class="mt-auto text-sm bg-custom-green text-custom-bg hover:bg-custom-green-hover py-2 px-4 rounded-lg w-full sm:w-auto">Ide Diversifikasi</button>
+            </div>
+
+            <div class="bg-custom-dashboard p-6 rounded-xl shadow-lg flex flex-col">
+                <h2 class="text-xl font-semibold text-custom-green mb-3">Manajemen Stok Efisien</h2>
+                <p class="text-custom-text-secondary mb-4 text-sm flex-grow">
+                    Tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
+                </p>
+                <ul class="list-disc list-inside text-custom-text-secondary space-y-1 text-sm mb-4">
+                    <li>Quis autem vel eum iure.</li>
+                    <li>Reprehenderit qui in ea voluptate.</li>
+                    <li>Velit esse quam nihil molestiae.</li>
+                </ul>
+                 <button class="mt-auto text-sm bg-custom-green text-custom-bg hover:bg-custom-green-hover py-2 px-4 rounded-lg w-full sm:w-auto">Tips Stok</button>
+            </div>
+
+        </div>
+
+        <div id="messageModal" class="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50 hidden p-4">
+            <div class="bg-custom-dashboard p-6 rounded-lg shadow-xl max-w-sm w-full">
+                <h3 id="modalTitle" class="text-xl font-semibold mb-4 text-custom-text-primary">Pesan</h3>
+                <p id="modalMessage" class="text-custom-text-secondary mb-6">Ini adalah pesan contoh.</p>
+                <button id="modalCloseButton" class="w-full bg-custom-green hover:bg-custom-green-hover text-custom-bg font-semibold py-2 px-4 rounded-lg">
+                    Tutup
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

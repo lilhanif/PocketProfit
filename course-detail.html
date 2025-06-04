@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Kursus - Dashboard UMKM</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                'custom-bg': 'var(--custom-bg-color)',
+                'custom-dashboard': 'var(--custom-dashboard-color)',
+                'custom-green': 'var(--custom-green-color)',
+                'custom-green-hover': 'var(--custom-green-hover-color)',
+                'custom-text-primary': 'var(--custom-text-primary)',
+                'custom-text-secondary': 'var(--custom-text-secondary)',
+              }
+            }
+          }
+        }
+      </script>
+      <style>
+        .course-content-section .lecture-list {
+            display: none; 
+            padding-left: 1rem; 
+        }
+        .course-content-section .section-header {
+            cursor: pointer;
+        }
+        .course-content-section.open .lecture-list {
+            display: block; 
+        }
+        .course-content-section .section-header .toggle-icon::before {
+            content: '▼'; 
+            display: inline-block;
+            margin-right: 0.5rem;
+            transition: transform 0.2s ease-in-out;
+        }
+        .course-content-section.open .section-header .toggle-icon::before {
+            transform: rotate(-180deg); 
+        }
+      </style>
+</head>
+<body class="flex h-screen overflow-hidden bg-custom-bg text-custom-text-primary">
+
+<aside id="sidebar" class="sidebar-transition bg-custom-dashboard text-custom-text-primary flex flex-col p-4 space-y-6 fixed top-0 left-0 h-full z-20" style="width: 260px;">
+        <div class="flex flex-col items-center space-y-2 py-4">
+            <div id="user-avatar-container" class="w-20 h-20 bg-gray-500 rounded-full flex items-center justify-center text-white text-2xl mb-2 overflow-hidden">
+                <img src="https://placehold.co/80x80/9AE19D/0D0F11?text=U" alt="Avatar Pengguna" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/80x80/1F1F1F/E2E8F0?text=U';">
+            </div>
+            <span id="user-name-sidebar" class="text-lg font-semibold sidebar-item-text">Nama</span>
+        </div>
+
+        <nav class="flex-grow space-y-2">
+            <a href="index.html" class="flex items-center space-x-3 p-3 " data-text="Dashboard">
+                <img src="assets/dashboard_icon.png" alt="Dashboard" class="h-4 w-4 flex-shrink-0" onerror="this.onerror=null; this.src='https://placehold.co/24x24/1F1F1F/9AE19D?text=D'; this.alt='Ikon Dasbor Cadangan';">
+                <span class="sidebar-item-text">Dashboard</span>
+            </a>
+            <a href="saran.html" class="flex items-center space-x-3 p-3 " data-text="Saran">
+                <img src="assets/saran_icon.png" alt="Saran" class="h-4 w-4 flex-shrink-0" onerror="this.onerror=null; this.src='https://placehold.co/24x24/1F1F1F/E2E8F0?text=S'; this.alt='Ikon Saran Cadangan';">
+                <span class="sidebar-item-text">Saran</span>
+            </a>
+            <a href="modal.html" class="flex items-center space-x-3 p-3 " data-text="Modal">
+                 <img src="assets/modal_icon.png" alt="Modal" class="h-4 w-4 flex-shrink-0" onerror="this.onerror=null; this.src='https://placehold.co/24x24/1F1F1F/E2E8F0?text=M'; this.alt='Ikon Modal Cadangan';">
+                <span class="sidebar-item-text">Modal</span>
+            </a>
+            <a href="kursus.html" class="flex items-center space-x-3 p-3 " data-text="Kursus"> <!-- Aktifkan link ini -->
+                <img src="assets/vector_icon.png" alt="Kursus" class="h-3 w-4 flex-shrink-0" onerror="this.onerror=null; this.src='https://placehold.co/24x24/1F1F1F/E2E8F0?text=K'; this.alt='Ikon Kursus Cadangan';">
+                <span class="sidebar-item-text">Kursus</span>
+            </a>
+        </nav>
+
+        <div class="mt-auto">
+            <button id="logout-button" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-700 w-full text-left" data-text="LOG OUT">
+                <img src="assets/Group.png" alt="Log Out" class="h-3 w-3 flex-shrink-0" onerror="this.onerror=null; this.src='https://placehold.co/24x24/1F1F1F/E2E8F0?text=LO'; this.alt='Ikon Logout Cadangan';">
+                <span class="sidebar-item-text font-bold">LOG OUT</span>
+            </button>
+        </div>
+
+        <button id="sidebar-toggle" class="absolute -right-3 top-1/2 -translate-y-1/2 bg-custom-green hover:bg-custom-green-hover text-custom-bg p-1.5 rounded-full focus:outline-none focus:ring-2 focus:ring-custom-green z-30">
+            <svg xmlns="http://www.w3.org/2000/svg" id="toggle-icon" class="h-5 w-5 rotate-180-transition transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
+        </button>
+    </aside>
+    <main id="main-content" class="flex-1 p-6 md:p-8 lg:p-10 overflow-y-auto content-transition">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-6">
+                <a href="kursus.html" class="text-custom-green hover:text-custom-green-hover flex items-center text-sm">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                    </svg>
+                    Kembali ke Daftar Kursus
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="lg:col-span-2 space-y-6">
+                    <div class="bg-custom-dashboard p-6 rounded-xl shadow-lg">
+                        <h1 id="course-title" class="text-2xl md:text-3xl font-bold text-custom-text-primary mb-2">Judul Kursus Placeholder</h1>
+                        <p id="course-description" class="text-custom-text-secondary mb-3">Deskripsi singkat mengenai kursus ini. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <div class="flex items-center text-yellow-400 mb-1">
+                            <span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span class="text-gray-500">⭐</span>
+                            <span class="ml-2 text-sm text-custom-text-secondary">(10.000 ratings)</span>
+                        </div>
+                        <p class="text-sm text-custom-text-secondary">Dibuat oleh <span id="course-creator" class="text-custom-green">Nama Kreator</span></p>
+                    </div>
+
+                    <div class="bg-custom-dashboard p-6 rounded-xl shadow-lg">
+                        <h2 class="text-xl font-semibold text-custom-text-primary mb-4">Yang Akan Dipelajari</h2>
+                        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-custom-text-secondary text-sm">
+                            <li class="flex items-start"><span class="text-custom-green mr-2">✓</span>Lorem ipsum dolor sit amet, consectetur.</li>
+                            <li class="flex items-start"><span class="text-custom-green mr-2">✓</span>Adipiscing elit, sed do eiusmod tempor.</li>
+                            <li class="flex items-start"><span class="text-custom-green mr-2">✓</span>Incididunt ut labore et dolore magna.</li>
+                            <li class="flex items-start"><span class="text-custom-green mr-2">✓</span>Aliqua. Ut enim ad minim veniam.</li>
+                            <li class="flex items-start"><span class="text-custom-green mr-2">✓</span>Quis nostrud exercitation ullamco.</li>
+                            <li class="flex items-start"><span class="text-custom-green mr-2">✓</span>Laboris nisi ut aliquip ex ea.</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-custom-dashboard p-6 rounded-xl shadow-lg">
+                        <h2 class="text-xl font-semibold text-custom-text-primary mb-3">Konten Kursus</h2>
+                        <p class="text-sm text-custom-text-secondary mb-4">50 sections • 481 lectures • 33j 47m total durasi</p>
+                        <div id="course-content-accordion" class="space-y-2">
+                            <div class="course-content-section border border-gray-700 rounded-lg overflow-hidden">
+                                <div class="section-header bg-gray-700/50 p-4 flex justify-between items-center">
+                                    <div>
+                                        <h3 class="font-semibold text-custom-text-primary"><span class="toggle-icon"></span>UMKM Naik Kelas: Cerdas Mengelola Uang dan Usaha</h3>
+                                        <p class="text-xs text-custom-text-secondary mt-1">14 materi • 47mnt</p>
+                                    </div>
+                                </div>
+                                <ul class="lecture-list p-4 space-y-2 bg-custom-dashboard">
+                                    <li class="flex justify-between items-center text-sm"><span class="text-custom-text-secondary">📄 Contoh Materi 1</span> <a href="#" class="text-custom-green hover:underline text-xs">Preview</a> <span class="text-custom-text-secondary text-xs">3mnt</span></li>
+                                    <li class="flex justify-between items-center text-sm"><span class="text-custom-text-secondary">📄 Contoh Materi 2</span> <span class="text-custom-text-secondary text-xs">5mnt</span></li>
+                                </ul>
+                            </div>
+                            <div class="course-content-section border border-gray-700 rounded-lg overflow-hidden">
+                                <div class="section-header bg-gray-700/50 p-4 flex justify-between items-center">
+                                     <div>
+                                        <h3 class="font-semibold text-custom-text-primary"><span class="toggle-icon"></span>Manajemen Keuangan UMKM: Dasar hingga Mahir</h3>
+                                        <p class="text-xs text-custom-text-secondary mt-1">18 materi • 1j 4mnt</p>
+                                    </div>
+                                </div>
+                                <ul class="lecture-list p-4 space-y-2 bg-custom-dashboard">
+                                    <li class="flex justify-between items-center text-sm"><span class="text-custom-text-secondary">📄 Contoh Materi A</span> <span class="text-custom-text-secondary text-xs">4mnt</span></li>
+                                    <li class="flex justify-between items-center text-sm"><span class="text-custom-text-secondary">📄 Contoh Materi B</span> <a href="#" class="text-custom-green hover:underline text-xs">Preview</a> <span class="text-custom-text-secondary text-xs">6mnt</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <button class="mt-4 text-custom-green hover:underline text-sm">Tampilkan semua section</button>
+                    </div>
+
+                    <div class="bg-custom-dashboard p-6 rounded-xl shadow-lg">
+                        <h2 class="text-xl font-semibold text-custom-text-primary mb-3"><span class="text-yellow-400">★</span> 4.5 Rating Kursus <span class="text-custom-text-secondary text-sm">• 48rb ratings</span></h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="border border-gray-700 p-4 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-10 h-10 rounded-full bg-gray-500 text-custom-text-primary flex items-center justify-center text-sm mr-3">AV</div>
+                                    <div>
+                                        <p class="font-semibold text-custom-text-primary text-sm">Antonio V.</p>
+                                        <p class="text-xs text-yellow-400">⭐⭐⭐⭐⭐ <span class="text-custom-text-secondary ml-1">• seminggu lalu</span></p>
+                                    </div>
+                                </div>
+                                <p class="text-custom-text-secondary text-sm">Muy bueno y completo, aunque requiere una actualización continua con los nuevos avances.</p>
+                            </div>
+                            <div class="border border-gray-700 p-4 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-10 h-10 rounded-full bg-gray-500 text-custom-text-primary flex items-center justify-center text-sm mr-3">MS</div>
+                                    <div>
+                                        <p class="font-semibold text-custom-text-primary text-sm">Maitray S.</p>
+                                        <p class="text-xs text-yellow-400">⭐⭐⭐⭐⭐ <span class="text-custom-text-secondary ml-1">• seminggu lalu</span></p>
+                                    </div>
+                                </div>
+                                <p class="text-custom-text-secondary text-sm">Yes it was good learning about AI how it so much evolve and so many skills can we develop...</p>
+                            </div>
+                        </div>
+                        <button class="mt-4 w-full border border-custom-green text-custom-green hover:bg-custom-green hover:text-custom-bg text-sm font-medium py-2 px-4 rounded-lg">Tampilkan semua review</button>
+                    </div>
+
+                     <div class="bg-custom-dashboard p-6 rounded-xl shadow-lg">
+                        <h2 class="text-xl font-semibold text-custom-text-primary mb-4">Kursus Lainnya oleh <span class="text-custom-green">Nama Kreator</span></h2>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div class="border border-gray-700 rounded-lg overflow-hidden">
+                                <img src="https://placehold.co/300x169/2A2D3E/E0E0E0?text=Kursus+Lain+1" alt="Kursus Lain 1" class="w-full h-32 object-cover">
+                                <div class="p-3">
+                                    <h4 class="font-semibold text-custom-text-primary text-sm mb-1">Judul Kursus Lain 1</h4>
+                                    <p class="text-xs text-yellow-400">⭐ 4.6 <span class="text-custom-text-secondary">(1,215)</span></p>
+                                    <p class="text-sm font-semibold text-custom-text-primary mt-1">Rp109,000</p>
+                                </div>
+                            </div>
+                            <div class="border border-gray-700 rounded-lg overflow-hidden">
+                                <img src="https://placehold.co/300x169/2A2D3E/E0E0E0?text=Kursus+Lain+2" alt="Kursus Lain 2" class="w-full h-32 object-cover">
+                                <div class="p-3">
+                                    <h4 class="font-semibold text-custom-text-primary text-sm mb-1">Judul Kursus Lain 2</h4>
+                                    <p class="text-xs text-yellow-400">⭐ 4.5 <span class="text-custom-text-secondary">(1,593)</span></p>
+                                    <p class="text-sm font-semibold text-custom-text-primary mt-1">Rp109,000</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="lg:col-span-1 space-y-6 sticky top-10 self-start">
+                    <div class="bg-custom-dashboard rounded-xl shadow-lg overflow-hidden">
+                        <div class="w-full aspect-video bg-gray-700 flex items-center justify-center">
+                            <img src="https://placehold.co/1600x900/0D0F11/9AE19D?text=Preview+Video+Kursus" alt="Preview Video Kursus" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <div>
+                                <span class="text-3xl font-bold text-custom-text-primary">Rp99.000</span>
+                                <span class="text-custom-text-secondary line-through ml-2">Rp499.000</span>
+                                <span class="ml-2 text-sm bg-red-500/20 text-red-400 px-2 py-0.5 rounded">80% off</span>
+                            </div>
+                            <div class="flex gap-2">
+                                <button class="w-full bg-custom-green text-custom-bg font-semibold py-3 rounded-lg hover:bg-custom-green-hover text-sm">Tambah Keranjang</button>
+                                <button class="p-3 border border-custom-text-secondary text-custom-text-secondary rounded-lg hover:border-custom-green hover:text-custom-green">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
+                                </button>
+                            </div>
+                            <button class="w-full border border-custom-green text-custom-green font-semibold py-3 rounded-lg hover:bg-custom-green hover:text-custom-bg text-sm">Beli Sekarang</button>
+                            <p class="text-xs text-custom-text-secondary text-center">Garansi uang kembali 30 hari</p>
+                            <div class="text-sm text-custom-text-secondary space-y-1 pt-3 border-t border-gray-700">
+                                <a href="#" class="hover:text-custom-green block">Bagikan</a>
+                                <a href="#" class="hover:text-custom-green block">Hadiahkan kursus ini</a>
+                                <a href="#" class="hover:text-custom-green block">Gunakan Kupon</a>
+                            </div>
+                             <div class="pt-3 border-t border-gray-700">
+                                <p class="font-semibold text-custom-text-primary text-sm mb-1">ST20MT190425G1 <span class="text-custom-green text-xs">diterapkan</span></p>
+                                <p class="text-xs text-custom-text-secondary">Kupon PocketProfit</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="messageModal" class="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50 hidden p-4">
+        <div class="bg-custom-dashboard p-6 rounded-lg shadow-xl max-w-sm w-full">
+            <h3 id="modalTitle" class="text-xl font-semibold mb-4 text-custom-text-primary">Pesan</h3>
+            <p id="modalMessage" class="text-custom-text-secondary mb-6">Ini adalah pesan contoh.</p>
+            <button id="modalCloseButton" class="w-full bg-custom-green hover:bg-custom-green-hover text-custom-bg font-semibold py-2 px-4 rounded-lg">
+                Tutup
+            </button>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script src="js/detail.js"></script>
+</body>
+</html>

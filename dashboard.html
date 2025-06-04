@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard UMKM</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                'custom-bg': 'var(--custom-bg-color)',
+                'custom-dashboard': 'var(--custom-dashboard-color)',
+                'custom-green': 'var(--custom-green-color)',
+                'custom-green-hover': 'var(--custom-green-hover-color)',
+                'custom-text-primary': 'var(--custom-text-primary)', 
+                'custom-text-secondary': 'var(--custom-text-secondary)', 
+              }
+            }
+          }
+        }
+      </script>
+</head>
+<body class="flex h-screen overflow-hidden bg-custom-bg text-custom-text-primary">
+
+    <aside id="sidebar" class="sidebar-transition bg-custom-dashboard text-custom-text-primary flex flex-col p-4 space-y-6 fixed top-0 left-0 h-full z-20" style="width: 260px;">
+        <div class="flex flex-col items-center space-y-2 py-4">
+            <div id="user-avatar-container" class="w-20 h-20 bg-gray-500 rounded-full flex items-center justify-center text-white text-2xl mb-2 overflow-hidden">
+                <img src="https://placehold.co/80x80/9AE19D/0D0F11?text=U" alt="User Avatar" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/80x80/1F1F1F/E2E8F0?text=U';">
+            </div>
+            <span id="user-name-sidebar" class="text-lg font-semibold sidebar-item-text">Nama</span>
+        </div>
+
+        <nav class="flex-grow space-y-2">
+            <a href="dashboard.html" class="flex items-center space-x-3 p-3 " data-text="Dashboard">
+                <img src="assets/dashboard_icon.png" alt="Dashboard" class="h-4 w-4 flex-shrink-0" onerror="this.onerror=null; this.src='https://placehold.co/24x24/1F1F1F/9AE19D?text=D'; this.alt='Dashboard Icon Fallback';">
+                <span class="sidebar-item-text">Dashboard</span>
+            </a>
+            <a href="saran.html" class="flex items-center space-x-3 p-3 " data-text="Saran">
+                <img src="assets/saran_icon.png" alt="Laporan" class="h-4 w-4 flex-shrink-0" ; this.src='https://placehold.co/24x24/1F1F1F/E2E8F0?text=L'; this.alt='Laporan Icon Fallback';">
+                <span class="sidebar-item-text">Saran</span>
+            </a>
+            <a href="modal.html" class="flex items-center space-x-3 p-3 " data-text="Modal">
+                 <img src="assets/modal_icon.png" alt="Transaksi" class="h-4 w-4 flex-shrink-0" ; this.src='https://placehold.co/24x24/1F1F1F/E2E8F0?text=T'; this.alt='Transaksi Icon Fallback';">
+                <span class="sidebar-item-text">Modal</span>
+            </a>
+            <a href="kursus.html" class="flex items-center space-x-3 p-3 " data-text="Kursus">
+                <img src="assets/vector_icon.png" alt="Kursus" class="h-3 w-4 flex-shrink-0" onerror="this.onerror=null; this.src='https://placehold.co/24x24/1F1F1F/E2E8F0?text=K'; this.alt='Ikon Kursus Cadangan';">
+                <span class="sidebar-item-text">Kursus</span>
+            </a>
+        </nav>
+
+        <div class="mt-auto">
+            <button id="logout-button" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-700 w-full text-left" data-text="LOG OUT">
+                <img src="assets/Group.png" alt="Log Out" class="h-3 w-3 flex-shrink-0" ; this.src='https://placehold.co/24x24/1F1F1F/E2E8F0?text=LO'; this.alt='Logout Icon Fallback';">
+                <span class="sidebar-item-text font-bold">LOG OUT</span>
+            </button>
+        </div>
+
+        <button id="sidebar-toggle" class="absolute -right-3 top-1/2 -translate-y-1/2 bg-custom-green hover:bg-custom-green-hover text-custom-bg p-1.5 rounded-full focus:outline-none focus:ring-2 focus:ring-custom-green z-30">
+            <svg xmlns="http://www.w3.org/2000/svg" id="toggle-icon" class="h-5 w-5 rotate-180-transition transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
+        </button>
+    </aside>
+
+    <main id="main-content" class="flex-1 p-6 md:p-10 overflow-y-auto content-transition">
+        <header class="mb-8">
+            <h1 class="text-3xl font-semibold text-custom-text-primary">Selamat Malam, <span class="text-custom-green">Username</span></h1>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bento-card bg-custom-dashboard p-6 rounded-xl shadow-lg md:col-span-3 flex flex-col justify-between">
+                <div>
+                    <h2 class="text-xl font-semibold text-custom-text-primary mb-2">Kekayaan Bersih Usaha</h2>
+                    <p class="text-4xl font-bold text-custom-green">Rp 75.500.000</p>
+                    <p class="text-sm text-custom-text-secondary mt-1">Aset: Rp 100.000.000 - Liabilitas: Rp 24.500.000</p>
+                </div>
+                <div class="mt-4">
+                    <button class="text-sm bg-custom-green text-custom-bg hover:bg-custom-green-hover py-2 px-4 rounded-lg">Lihat Detail Neraca</button>
+                </div>
+            </div>
+
+            <div class="bento-card bg-custom-dashboard p-6 rounded-xl shadow-lg md:col-span-2 flex flex-col justify-between">
+                <div>
+                    <h2 class="text-lg font-semibold text-custom-text-primary mb-3">Ringkasan Laba Rugi (Bulan Ini)</h2>
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-custom-text-primary"><span>Total Pendapatan:</span> <span class="font-semibold">Rp 25.000.000</span></div>
+                        <div class="flex justify-between text-custom-text-primary"><span>Harga Pokok Penjualan (HPP):</span> <span class="font-semibold">Rp 12.000.000</span></div>
+                        <div class="flex justify-between text-custom-text-primary"><span>Biaya Operasional:</span> <span class="font-semibold">Rp 5.000.000</span></div>
+                        <hr class="border-gray-700 my-2">
+                        <div class="flex justify-between text-custom-green text-xl"><span>Laba Bersih:</span> <span class="font-bold">Rp 8.000.000</span></div>
+                    </div>
+                </div>
+                 <div class="mt-4">
+                    <button class="text-sm bg-custom-green text-custom-bg hover:bg-custom-green-hover py-2 px-4 rounded-lg">Laporan Laba Rugi Lengkap</button>
+                </div>
+            </div>
+
+            <div class="bento-card bg-custom-dashboard p-6 rounded-xl shadow-lg flex flex-col justify-between">
+                <div>
+                    <h2 class="text-lg font-semibold text-custom-text-primary mb-3">Tujuan Keuangan Usaha</h2>
+                    <div class="space-y-3">
+                        <div>
+                            <div class="flex justify-between text-sm text-custom-text-secondary mb-1">
+                                <span>Ekspansi Cabang</span>
+                                <span>60%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2.5">
+                                <div class="bg-custom-green h-2.5 rounded-full" style="width: 60%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-sm text-custom-text-secondary mb-1">
+                                <span>Pembelian Mesin Baru</span>
+                                <span>30%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2.5">
+                                <div class="bg-custom-green h-2.5 rounded-full" style="width: 30%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4">
+                     <button class="text-sm bg-custom-green text-custom-bg hover:bg-custom-green-hover py-2 px-3 rounded-lg w-full">Kelola Tujuan Usaha</button>
+                </div>
+            </div>
+
+            <div class="bento-card bg-custom-dashboard p-6 rounded-xl shadow-lg flex flex-col justify-center items-center">
+                <h2 class="text-lg font-semibold text-custom-text-primary mb-2">Sisa Budget Operasional</h2>
+                <p class="text-3xl font-bold text-custom-green">Rp 1.500.000</p>
+                <p class="text-sm text-custom-text-secondary mt-1">dari Rp 5.000.000 (bulan ini)</p>
+                <div class="w-full bg-gray-700 rounded-full h-4 mt-4">
+                    <div class="bg-custom-green h-4 rounded-full" style="width: 30%"></div>
+                </div>
+            </div>
+
+            <div class="bento-card bg-custom-dashboard p-6 rounded-xl shadow-lg md:col-span-2 flex flex-col justify-between">
+                <div>
+                    <h2 class="text-lg font-semibold text-custom-text-primary mb-3">Perkembangan Modal Usaha</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <p class="text-sm text-custom-text-secondary">Modal Awal:</p>
+                            <p class="text-2xl font-semibold text-custom-text-primary">Rp 50.000.000</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-custom-text-secondary">Modal Saat Ini:</p>
+                            <p class="text-2xl font-bold text-custom-green">Rp 75.500.000</p>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <p class="text-sm text-custom-text-secondary">Pertumbuhan Modal:</p>
+                        <div class="flex items-center">
+                            <p class="text-xl font-bold text-custom-green">+51%</p>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-custom-green ml-1" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4">
+                     <button class="text-sm bg-custom-green text-custom-bg hover:bg-custom-green-hover py-2 px-3 rounded-lg w-full">Lihat Detail Modal</button>
+                </div>
+            </div>
+
+
+            <div class="bento-card bg-custom-dashboard p-6 rounded-xl shadow-lg md:col-span-3">
+                <h2 class="text-xl font-semibold text-custom-text-primary mb-3">Pengeluaran Terkini Usaha</h2>
+                <ul class="space-y-2 text-sm">
+                    <li class="flex justify-between items-center p-2 hover:bg-gray-700 rounded-md">
+                        <div>
+                            <span class="font-medium text-custom-text-primary">Pembelian Bahan Baku</span>
+                            <span class="block text-xs text-custom-text-secondary">Supplier Jaya Abadi</span>
+                        </div>
+                        <span class="font-semibold text-red-400">-Rp 2.500.000</span>
+                    </li>
+                    <li class="flex justify-between items-center p-2 hover:bg-gray-700 rounded-md">
+                        <div>
+                            <span class="font-medium text-custom-text-primary">Biaya Listrik & Air</span>
+                             <span class="block text-xs text-custom-text-secondary">Tagihan Bulan Mei</span>
+                        </div>
+                        <span class="font-semibold text-red-400">-Rp 850.000</span>
+                    </li>
+                    <li class="flex justify-between items-center p-2 hover:bg-gray-700 rounded-md">
+                        <div>
+                            <span class="font-medium text-custom-text-primary">Gaji Karyawan</span>
+                            <span class="block text-xs text-custom-text-secondary">Transfer Bulanan</span>
+                        </div>
+                        <span class="font-semibold text-red-400">-Rp 3.000.000</span>
+                    </li>
+                </ul>
+                <button class="mt-4 text-sm text-custom-green hover:underline w-full text-left">Lihat Semua Pengeluaran</button>
+            </div>
+        </div>
+
+        <div id="messageModal" class="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50 hidden p-4">
+            <div class="bg-custom-dashboard p-6 rounded-lg shadow-xl max-w-sm w-full">
+                <h3 id="modalTitle" class="text-xl font-semibold mb-4 text-custom-text-primary">Message</h3>
+                <p id="modalMessage" class="text-custom-text-secondary mb-6">This is a sample message.</p>
+                <button id="modalCloseButton" class="w-full bg-custom-green hover:bg-custom-green-hover text-custom-bg font-semibold py-2 px-4 rounded-lg">
+                    Close
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
