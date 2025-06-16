@@ -1,17 +1,14 @@
-/* css/style.css */
 
-/* Define custom CSS variables */
 :root {
     --custom-bg-color: #0D0F11;
     --custom-dashboard-color: #1F1F1F;
-    --custom-green-color: #9AE19D; /* Warna hijau utama Anda */
+    --custom-green-color: #9AE19D; 
     --custom-green-hover-color: #82c985;
     --custom-text-primary: #e2e8f0;
     --custom-text-secondary: #94a3b8;
     --custom-scrollbar-track: #2a2c2e;
     --custom-scrollbar-thumb: #4a4c4e;
     --custom-scrollbar-thumb-hover: #6a6c6e;
-    /* Variabel untuk warna background aktif dengan transparansi */
     --custom-active-bg-color: rgba(0, 255, 136, 0.1);
 }
 
@@ -19,7 +16,6 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
-/* Custom scrollbar ... (existing styles) */
 ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
@@ -36,7 +32,6 @@ body {
     background: var(--custom-scrollbar-thumb-hover);
 }
 
-/* Sidebar and Content Transitions ... (existing styles) */
 .sidebar-transition {
     transition: width 0.3s ease-in-out, padding 0.3s ease-in-out;
 }
@@ -56,41 +51,27 @@ body {
     min-height: 180px;
 }
 
-/* STYLES FOR SIDEBAR NAVIGATION LINKS */
 aside nav a {
-    /* Default state for all navigation links */
-    border-left: 3px solid transparent; /* Space for the active border */
-    /* Tailwind's p-3 (0.75rem padding) is applied in HTML.
-       The border is drawn inside this padding due to box-sizing: border-box.
-    */
+    border-left: 3px solid transparent; 
+
     transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-left-color 0.2s ease-in-out; /* Smooth transition */
 }
 
-/* NEW .active CLASS DEFINITION */
 .active {
-  color: var(--custom-green-color) !important; /* Use !important to override Tailwind text color if necessary */
-  background-color: var(--custom-active-bg-color) !important; /* Use !important to override Tailwind bg color */
-  border-left-color: var(--custom-green-color) !important; /* Activate left border color */
-}
+  color: var(--custom-green-color) !important; 
+  background-color: var(--custom-active-bg-color) !important; 
+  border-left-color: var(--custom-green-color) !important; 
 
-/* Ensure hover on non-active items is consistent with Tailwind's hover:bg-gray-700 */
-/* This is handled by JS adding/removing hover:bg-gray-700, but good to be aware */
+
 aside nav a:not(.active):hover {
-    /* Tailwind class hover:bg-gray-700 will handle this */
 }
 
-/* Optional: Specific hover for active link if you want it to be different */
-/* .active:hover {
-    background-color: rgba(0, 255, 136, 0.15); /* Slightly different on hover if needed
-} */
-
-/* Tab button styling from modal.html (ensure it's globally available if needed or scoped) */
 .tab-button.active {
-    border-bottom-color: var(--custom-tab-active-border); /* Defined in Tailwind config */
-    color: var(--custom-tab-active-text); /* Defined in Tailwind config */
+    border-bottom-color: var(--custom-tab-active-border); 
     font-weight: 600;
 }
 .tab-button {
     border-bottom: 2px solid transparent;
-    color: var(--custom-tab-inactive-text); /* Defined in Tailwind config */
+    color: var(--custom-tab-inactive-text); 
+}
 }

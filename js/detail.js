@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    const sidebarNavLinks = document.querySelectorAll('#sidebar nav a');
     const currentPath = window.location.pathname;
 
     sidebarNavLinks.forEach(link => {

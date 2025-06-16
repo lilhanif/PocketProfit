@@ -24,20 +24,6 @@
         }
       </script>
       <style>
-        .popular-courses-container::-webkit-scrollbar {
-            height: 8px;
-        }
-        .popular-courses-container::-webkit-scrollbar-track {
-            background: var(--custom-dashboard-color);
-            border-radius: 10px;
-        }
-        .popular-courses-container::-webkit-scrollbar-thumb {
-            background: var(--custom-scrollbar-thumb);
-            border-radius: 10px;
-        }
-        .popular-courses-container::-webkit-scrollbar-thumb:hover {
-            background: var(--custom-scrollbar-thumb-hover);
-        }
         .course-card-image {
             aspect-ratio: 16 / 9; 
             object-fit: cover; 
@@ -56,26 +42,26 @@
 
         <nav class="flex-grow space-y-2">
             <a href="dashboard.html" class="flex items-center space-x-3 p-3 " data-text="Dashboard">
-                <img src="assets/dashboard_icon.png" alt="Dashboard" class="h-4 w-4 flex-shrink-0" onerror="this.onerror=null; this.src='https://placehold.co/24x24/1F1F1F/9AE19D?text=D'; this.alt='Ikon Dasbor Cadangan';">
+                <img src="assets/dashboard_icon.png" alt="Dashboard" class="h-4 w-4 flex-shrink-0">
                 <span class="sidebar-item-text">Dashboard</span>
             </a>
-            <a href="saran.html" class="flex items-center space-x-3 p-3 " data-text="Saran">
-                <img src="assets/saran_icon.png" alt="Saran" class="h-4 w-4 flex-shrink-0" onerror="this.onerror=null; this.src='https://placehold.co/24x24/1F1F1F/E2E8F0?text=S'; this.alt='Ikon Saran Cadangan';">
-                <span class="sidebar-item-text">Saran</span>
+            <a href="artikel.html" class="flex items-center space-x-3 p-3 " data-text="Artikel">
+                <img src="assets/saran_icon.png" alt="Artikel" class="h-4 w-4 flex-shrink-0">
+                <span class="sidebar-item-text">Artikel</span>
             </a>
             <a href="modal.html" class="flex items-center space-x-3 p-3 " data-text="Modal">
-                 <img src="assets/modal_icon.png" alt="Modal" class="h-4 w-4 flex-shrink-0" onerror="this.onerror=null; this.src='https://placehold.co/24x24/1F1F1F/E2E8F0?text=M'; this.alt='Ikon Modal Cadangan';">
+                 <img src="assets/modal_icon.png" alt="Modal" class="h-4 w-4 flex-shrink-0">
                 <span class="sidebar-item-text">Modal</span>
             </a>
-            <a href="kursus.html" class="flex items-center space-x-3 p-3 " data-text="Kursus"> <!-- Aktifkan link ini -->
-                <img src="assets/vector_icon.png" alt="Kursus" class="h-3 w-4 flex-shrink-0" onerror="this.onerror=null; this.src='https://placehold.co/24x24/1F1F1F/E2E8F0?text=K'; this.alt='Ikon Kursus Cadangan';">
+            <a href="kursus.html" class="flex items-center space-x-3 p-3 " data-text="Kursus">
+                <img src="assets/vector_icon.png" alt="Kursus" class="h-3 w-4 flex-shrink-0">
                 <span class="sidebar-item-text">Kursus</span>
             </a>
         </nav>
 
         <div class="mt-auto">
             <button id="logout-button" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-700 w-full text-left" data-text="LOG OUT">
-                <img src="assets/Group.png" alt="Log Out" class="h-3 w-3 flex-shrink-0" onerror="this.onerror=null; this.src='https://placehold.co/24x24/1F1F1F/E2E8F0?text=LO'; this.alt='Ikon Logout Cadangan';">
+                <img src="assets/Group.png" alt="Log Out" class="h-3 w-3 flex-shrink-0">
                 <span class="sidebar-item-text font-bold">LOG OUT</span>
             </button>
         </div>
@@ -113,21 +99,15 @@
                         <option value="pemasaran">Pemasaran</option>
                         <option value="pajak">Pajak</option>
                     </select>
-                    <select class="bg-custom-dashboard border border-gray-700 text-custom-text-secondary text-sm rounded-lg p-2 focus:ring-custom-green focus:border-custom-green">
-                        <option selected>Urutkan</option>
-                        <option value="populer">Paling Populer</option>
-                        <option value="terbaru">Paling Baru</option>
-                        <option value="rating">Rating Tertinggi</option>
-                    </select>
                 </div>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 <div class="bg-custom-dashboard rounded-xl shadow-lg overflow-hidden flex flex-col">
-                    <img img src="" alt="" class="w-full h-40 course-card-image">
+                    <img src="https://placehold.co/600x338/2A2D3E/E0E0E0?text=Manajemen+Kas" alt="Gambar Kursus Manajemen Kas" class="w-full course-card-image">
                     <div class="p-4 flex flex-col flex-grow">
-                        <h3 class="text-md font-semibold text-custom-text-primary mb-1">TITLE</h3>
-                        <p class="text-xs text-custom-green bg-custom-green/10 inline-block px-2 py-0.5 rounded-full mb-2 self-start">category</p>
-                        <p class="text-xs text-custom-text-secondary mb-3 flex-grow">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <h3 class="text-md font-semibold text-custom-text-primary mb-1">Manajemen Kas Lanjutan</h3>
+                        <p class="text-xs text-custom-green bg-custom-green/10 inline-block px-2 py-0.5 rounded-full mb-2 self-start">Keuangan</p>
+                        <p class="text-xs text-custom-text-secondary mb-3 flex-grow">Pelajari teknik lanjutan untuk mengoptimalkan arus kas dan meningkatkan likuiditas usaha Anda.</p>
                         <div class="mb-2">
                             <p class="text-xs text-custom-text-secondary">Progress: 80%</p>
                             <div class="w-full bg-gray-700 rounded-full h-1.5 mt-1">
@@ -138,11 +118,11 @@
                     </div>
                 </div>
                 <div class="bg-custom-dashboard rounded-xl shadow-lg overflow-hidden flex flex-col">
-                    <img img src="" alt="" class="w-full h-40 course-card-image">
+                    <img src="https://placehold.co/600x338/2A2D3E/E0E0E0?text=Akuntansi+UMKM" alt="Gambar Kursus Akuntansi" class="w-full course-card-image">
                     <div class="p-4 flex flex-col flex-grow">
-                        <h3 class="text-md font-semibold text-custom-text-primary mb-1">TITLE</h3>
-                        <p class="text-xs text-custom-green bg-custom-green/10 inline-block px-2 py-0.5 rounded-full mb-2 self-start">category</p>
-                        <p class="text-xs text-custom-text-secondary mb-3 flex-grow">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <h3 class="text-md font-semibold text-custom-text-primary mb-1">Akuntansi untuk UMKM</h3>
+                        <p class="text-xs text-custom-green bg-custom-green/10 inline-block px-2 py-0.5 rounded-full mb-2 self-start">Akuntansi</p>
+                        <p class="text-xs text-custom-text-secondary mb-3 flex-grow">Pahami dasar-dasar akuntansi yang esensial untuk mencatat transaksi dan membuat laporan keuangan sederhana.</p>
                          <div class="mb-2">
                             <p class="text-xs text-custom-text-secondary">Progress: 40%</p>
                             <div class="w-full bg-gray-700 rounded-full h-1.5 mt-1">
@@ -153,11 +133,11 @@
                     </div>
                 </div>
                 <div class="bg-custom-dashboard rounded-xl shadow-lg overflow-hidden flex flex-col">
-                     <img img src="" alt="" class="w-full h-40 course-card-image">
+                     <img src="https://placehold.co/600x338/2A2D3E/E0E0E0?text=Pemasaran+101" alt="Gambar Kursus Pemasaran" class="w-full course-card-image">
                     <div class="p-4 flex flex-col flex-grow">
-                        <h3 class="text-md font-semibold text-custom-text-primary mb-1">TITLE</h3>
-                        <p class="text-xs text-custom-green bg-custom-green/10 inline-block px-2 py-0.5 rounded-full mb-2 self-start">category</p>
-                        <p class="text-xs text-custom-text-secondary mb-3 flex-grow">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <h3 class="text-md font-semibold text-custom-text-primary mb-1">Pemasaran Digital 101</h3>
+                        <p class="text-xs text-custom-green bg-custom-green/10 inline-block px-2 py-0.5 rounded-full mb-2 self-start">Pemasaran</p>
+                        <p class="text-xs text-custom-text-secondary mb-3 flex-grow">Kenali berbagai kanal pemasaran digital dan cara memanfaatkannya untuk menjangkau lebih banyak pelanggan.</p>
                          <div class="mb-2">
                             <p class="text-xs text-custom-text-secondary">Progress: 0%</p>
                             <div class="w-full bg-gray-700 rounded-full h-1.5 mt-1">
@@ -168,61 +148,52 @@
                     </div>
                 </div>
                 <div class="bg-custom-dashboard rounded-xl shadow-lg overflow-hidden flex flex-col">
-                     <img img src="" alt="" class="w-full h-40 course-card-image">
+                     <img src="https://placehold.co/600x338/2A2D3E/E0E0E0?text=Pajak+Cerdas" alt="Gambar Kursus Pajak" class="w-full course-card-image">
                     <div class="p-4 flex flex-col flex-grow">
-                        <h3 class="text-md font-semibold text-custom-text-primary mb-1">TITLE</h3>
-                        <p class="text-xs text-custom-green bg-custom-green/10 inline-block px-2 py-0.5 rounded-full mb-2 self-start">category</p>
-                        <p class="text-xs text-custom-text-secondary mb-3 flex-grow">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <h3 class="text-md font-semibold text-custom-text-primary mb-1">Strategi Perpajakan Cerdas</h3>
+                        <p class="text-xs text-custom-green bg-custom-green/10 inline-block px-2 py-0.5 rounded-full mb-2 self-start">Pajak</p>
+                        <p class="text-xs text-custom-text-secondary mb-3 flex-grow">Pelajari cara merencanakan pajak Anda secara legal untuk meminimalkan beban pajak dan mengoptimalkan keuntungan.</p>
                          <div class="mb-2">
                             <p class="text-xs text-custom-text-secondary">Progress: 0%</p>
                             <div class="w-full bg-gray-700 rounded-full h-1.5 mt-1">
                                 <div class="bg-custom-green h-1.5 rounded-full" style="width: 0%;"></div>
                             </div>
                         </div>
-                        <a href="course-detail.html?courseId=pemasaran-digital" class="block mt-auto w-full bg-custom-green text-custom-bg text-sm font-medium py-2 px-4 rounded-lg hover:bg-custom-green-hover text-center">Mulai Belajar</a>
+                        <a href="course-detail.html?courseId=pajak" class="block mt-auto w-full bg-custom-green text-custom-bg text-sm font-medium py-2 px-4 rounded-lg hover:bg-custom-green-hover text-center">Mulai Belajar</a>
                     </div>
                 </div>
                 <div class="bg-custom-dashboard rounded-xl shadow-lg overflow-hidden flex flex-col">
-                     <img img src="" alt="" class="w-full h-40 course-card-image">
+                     <img src="https://placehold.co/600x338/2A2D3E/E0E0E0?text=Analisis+Laporan" alt="Gambar Kursus Analisis Laporan Keuangan" class="w-full course-card-image">
                     <div class="p-4 flex flex-col flex-grow">
-                        <h3 class="text-md font-semibold text-custom-text-primary mb-1">TITLE</h3>
-                        <p class="text-xs text-custom-green bg-custom-green/10 inline-block px-2 py-0.5 rounded-full mb-2 self-start">category</p>
-                        <p class="text-xs text-custom-text-secondary mb-3 flex-grow">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <h3 class="text-md font-semibold text-custom-text-primary mb-1">Analisis Laporan Keuangan</h3>
+                        <p class="text-xs text-custom-green bg-custom-green/10 inline-block px-2 py-0.5 rounded-full mb-2 self-start">Akuntansi</p>
+                        <p class="text-xs text-custom-text-secondary mb-3 flex-grow">Belajar membaca neraca, laporan laba rugi, dan arus kas untuk membuat keputusan bisnis yang lebih baik.</p>
                          <div class="mb-2">
-                            <p class="text-xs text-custom-text-secondary">Progress: 0%</p>
+                            <p class="text-xs text-custom-text-secondary">Progress: 20%</p>
                             <div class="w-full bg-gray-700 rounded-full h-1.5 mt-1">
-                                <div class="bg-custom-green h-1.5 rounded-full" style="width: 0%;"></div>
+                                <div class="bg-custom-green h-1.5 rounded-full" style="width: 20%;"></div>
                             </div>
                         </div>
-                        <a href="course-detail.html?courseId=pemasaran-digital" class="block mt-auto w-full bg-custom-green text-custom-bg text-sm font-medium py-2 px-4 rounded-lg hover:bg-custom-green-hover text-center">Mulai Belajar</a>
+                        <a href="course-detail.html?courseId=analisis-laporan" class="block mt-auto w-full bg-custom-green text-custom-bg text-sm font-medium py-2 px-4 rounded-lg hover:bg-custom-green-hover text-center">Lanjutkan Belajar</a>
                     </div>
                 </div>
                 <div class="bg-custom-dashboard rounded-xl shadow-lg overflow-hidden flex flex-col">
-                     <img img src="" alt="" class="w-full h-40 course-card-image">
+                     <img src="https://placehold.co/600x338/2A2D3E/E0E0E0?text=Branding+UMKM" alt="Gambar Kursus Branding" class="w-full course-card-image">
                     <div class="p-4 flex flex-col flex-grow">
-                        <h3 class="text-md font-semibold text-custom-text-primary mb-1">TITLE</h3>
-                        <p class="text-xs text-custom-green bg-custom-green/10 inline-block px-2 py-0.5 rounded-full mb-2 self-start">category</p>
-                        <p class="text-xs text-custom-text-secondary mb-3 flex-grow">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <h3 class="text-md font-semibold text-custom-text-primary mb-1">Branding untuk Usaha Kecil</h3>
+                        <p class="text-xs text-custom-green bg-custom-green/10 inline-block px-2 py-0.5 rounded-full mb-2 self-start">Pemasaran</p>
+                        <p class="text-xs text-custom-text-secondary mb-3 flex-grow">Bangun identitas merek yang kuat dan berkesan agar produk Anda lebih menonjol di pasar.</p>
                          <div class="mb-2">
                             <p class="text-xs text-custom-text-secondary">Progress: 0%</p>
                             <div class="w-full bg-gray-700 rounded-full h-1.5 mt-1">
                                 <div class="bg-custom-green h-1.5 rounded-full" style="width: 0%;"></div>
                             </div>
                         </div>
-                        <a href="course-detail.html?courseId=pemasaran-digital" class="block mt-auto w-full bg-custom-green text-custom-bg text-sm font-medium py-2 px-4 rounded-lg hover:bg-custom-green-hover text-center">Mulai Belajar</a>
+                        <a href="course-detail.html?courseId=branding" class="block mt-auto w-full bg-custom-green text-custom-bg text-sm font-medium py-2 px-4 rounded-lg hover:bg-custom-green-hover text-center">Mulai Belajar</a>
                     </div>
                 </div>
-        </section>
-
-        <div id="messageModal" class="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50 hidden p-4">
-            <div class="bg-custom-dashboard p-6 rounded-lg shadow-xl max-w-sm w-full">
-                <h3 id="modalTitle" class="text-xl font-semibold mb-4 text-custom-text-primary">Pesan</h3>
-                <p id="modalMessage" class="text-custom-text-secondary mb-6">Ini adalah pesan contoh.</p>
-                <button id="modalCloseButton" class="w-full bg-custom-green hover:bg-custom-green-hover text-custom-bg font-semibold py-2 px-4 rounded-lg">
-                    Tutup
-                </button>
             </div>
-        </div>
+        </section>
     </main>
 
     <script src="js/script.js"></script>
