@@ -1,4 +1,4 @@
-PocketProfit
+💼 PocketProfit
 PocketProfit is a financial management web application specifically designed to help Micro, Small, and Medium Enterprises (MSMEs) manage their business finances more effectively. This application provides an intuitive interface to monitor financial health, set budgets, and gain insights through articles and courses
 
 ✨ Key Features
@@ -20,11 +20,11 @@ This project was developed as a university assignment for a Financial Management
 Since GitHub Pages only serves static files and does not support server-side code or direct database connections, a traditional backend was not feasible for this hosting environment. To showcase the application's dynamic features (like adding/deleting transactions and goals) in a persistent manner, localStorage was chosen. It acts as a client-side database, allowing the app to be fully interactive and functional for demonstration purposes directly within the browser
 
 💻 Tech Stack
-HTML5: For the basic structure of the web pages
+HTML: For the basic structure of the web pages
 
 Tailwind CSS: For styling and rapidly building a modern, responsive user interface
 
-JavaScript (ES6+): For all interactive logic, DOM manipulation, and application functionality
+JavaScript  For all interactive logic, DOM manipulation, and application functionality
 
 Chart.js: A library used to create interactive and informative charts
 
