@@ -215,6 +215,21 @@
         </div>
     </div>
 
+    <div id="logoutConfirmation" class="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50 hidden p-4">
+        <div class="bg-custom-dashboard p-6 rounded-lg shadow-xl max-w-sm w-full text-center">
+            <h3 class="text-xl font-semibold mb-4 text-custom-text-primary">Konfirmasi Logout</h3>
+            <p class="text-custom-text-secondary mb-6">Apakah Anda yakin ingin keluar?</p>
+            <div class="flex justify-center gap-4">
+                <button id="cancelLogoutButton" class="bg-gray-600 text-custom-text-primary font-semibold py-2 px-4 rounded-lg hover:bg-gray-500">
+                   Batal
+               </button>
+               <button id="confirmLogoutButton" class="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-lg">
+                   Keluar
+               </button>
+           </div>
+        </div>
+    </div>
+
     <script src="js/storage.js"></script>
     <script src="js/dashboard.js"></script>
     <script src="js/script.js"></script>
